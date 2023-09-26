@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Math&amp;Computer">
+    <meta name="author" content="致宏">
+    
+    <title>
+        
+            群和代数的编程软件 | GAP 简介 |
+        
+        学习小站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"math.wzhecnu.xyz","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                学习小站
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">群和代数的编程软件 | GAP 简介</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">致宏</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-24 14:17:43
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/GAP/">GAP</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/sage/">sage</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CAS/">CAS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <blockquote>
+<p>文章设置了主页隐藏，内容可能不完整，正在撰写中。。。</p>
+</blockquote>
+<h1 id="唠唠闲话"><a href="#唠唠闲话" class="headerlink" title="唠唠闲话"></a>唠唠闲话</h1><hr>
+<h3 id="换位子集"><a href="#换位子集" class="headerlink" title="换位子集"></a><span id="commutator">换位子集</span></h3><p>读研前的暑假，和研友聊天时想到一个问题：<br>设 $G$ 为群，$G$ 的<strong>换位子集</strong>和<strong>换位子群</strong>分别为：<br>$$Comm(G):={[a,b] \mid \forall\ a,b\in G}\ where\ [a,b]:=aba^{-1}b^{-1}\<br>G’:=&lt;a\mid a\in Comm(G)&gt;$$<br>那么<strong>换位子群 $G’$ 和换位子集 $Comm(G)$ 是否总是相等？</strong></p>
+<p>在 StackExchange 找到了<a class="link"   target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/7811/derived-subgroup-where-not-every-element-is-a-commutator" >相关讨论<i class="fas fa-external-link-alt"></i></a>，上边贴了一小段代码：<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/20211113210745.png" alt="20211113210745"><br>从这里开始，我了解到 GAP 并产生兴趣，所以第一个例子用它来介绍了。</p>
+<p>相关结论：</p>
+<ol>
+<li>当 $G$ 为交换群时，$G’=Comm(G)={e}$ 显然成立；</li>
+<li>当 $G$ 为非交换单群时二者相等，参看2010年的<a class="link"   target="_blank" rel="noopener" href="https://www.math.auckland.ac.nz/~obrien/research/ore.pdf" >这篇文章(Ore Conjecture)<i class="fas fa-external-link-alt"></i></a>，依赖单群分类定理。</li>
+<li>命题一般不成立，最简单的反例是四元自由群 $G=F(a,b,c,d)$ ，换位子集对乘法不封闭，比如 $[a,b][c,d]\notin Comm(G)$。</li>
+</ol>
+<p>有限群的反例不好构造，下边通过 GAP 寻找反例并给出群结构信息。</p>
+<ol>
+<li><p>定义判断函数</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 判断换位子集是否构成群</span></span><br><span class="line">chk := <span class="keyword">function</span>(G)</span><br><span class="line">    <span class="keyword">local</span> comms,sub;</span><br><span class="line">    comms := <span class="built_in">Set</span>(List(Cartesian(G,G),p-&gt;Comm(p[<span class="number">1</span>],p[<span class="number">2</span>]))); <span class="comment"># 换位子集</span></span><br><span class="line">    sub := <span class="built_in">Set</span>(DerivedSubgroup(G)); <span class="comment"># g的换位子群</span></span><br><span class="line">    <span class="keyword">return</span> Size(comms) = Size(sub);</span><br><span class="line"><span class="keyword">end</span>;;</span><br></pre></td></tr></table></figure>
+<p> 第四行是函数式语法，GAP 的用法有时间再介绍。</p>
+</li>
+<li><p>用 <code>AllSmallGroups</code> 检验前 100 阶群</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1.</span><span class="number">.100</span>] <span class="keyword">do</span></span><br><span class="line">    examples := AllSmallGroups(i,chk,<span class="literal">false</span>); <span class="comment">#检查i阶群所有同构类</span></span><br><span class="line">    Print(i,<span class="string">&quot;\t&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> Length(examples) &gt; <span class="number">0</span> then <span class="comment">#存在反例</span></span><br><span class="line">        Print(<span class="string">&quot;\nFind examples !\nGroup order:&quot;</span>,i,<span class="string">&quot;\nNumbers:&quot;</span>,Length(examples),<span class="string">&quot;\n&quot;</span>); <span class="comment"># 反例个数</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    fi;</span><br><span class="line">od;</span><br></pre></td></tr></table></figure>
+<p> 最小反例有 96 阶，一共两个：<br> <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20211113105127.png" alt="深度截图_选择区域_20211113105127"></p>
+</li>
+<li><p>用 <code>StructureDescription</code> 获取群的结构信息：</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List(examples,StructureDescription);</span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line"><span class="comment"># [ &quot;((C4 x C2) : C4) : C3&quot;, &quot;(C2 x C2 x Q8) : C3&quot; ]</span></span><br></pre></td></tr></table></figure>
+<p> 两个反例的群结构分别为<br> $$((\mathbb{Z}_4\times\mathbb{Z}_2)\rtimes \mathbb{Z}_4)\rtimes\mathbb{Z}_3\<br> (\mathbb{Z}_2\times\mathbb{Z}_2\times Q_8)\rtimes\mathbb{Z}_3<br> $$<br> 其中 $Q_8$ 为四元数群(Quaternion group)。</p>
+</li>
+<li><p>用 <code>IsomorphismPermGroup</code> 获取置换表示并简化</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 置换群表示</span></span><br><span class="line">G1 := Image(IsomorphismPermGroup(examples[<span class="number">1</span>]));; </span><br><span class="line"><span class="comment"># 简化表示</span></span><br><span class="line">G1 := Image(SmallerDegreePermutationRepresentation(G1));;</span><br><span class="line"><span class="comment"># 打印生成元</span></span><br><span class="line">GeneratorsOfGroup(G1);</span><br></pre></td></tr></table></figure>
+<p> 得到反例1的一组生成元：</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>)(<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>)(<span class="number">7</span>,<span class="number">11</span>,<span class="number">9</span>)(<span class="number">8</span>,<span class="number">12</span>,<span class="number">10</span>),</span><br><span class="line">(<span class="number">3</span>,<span class="number">9</span>,<span class="number">4</span>,<span class="number">10</span>)(<span class="number">5</span>,<span class="number">7</span>)(<span class="number">6</span>,<span class="number">8</span>)(<span class="number">11</span>,<span class="number">12</span>), </span><br><span class="line">(<span class="number">3</span>,<span class="number">4</span>)(<span class="number">5</span>,<span class="number">6</span>)(<span class="number">7</span>,<span class="number">8</span>)(<span class="number">9</span>,<span class="number">10</span>),</span><br><span class="line">(<span class="number">1</span>,<span class="number">5</span>,<span class="number">3</span>)(<span class="number">2</span>,<span class="number">6</span>,<span class="number">4</span>)(<span class="number">7</span>,<span class="number">9</span>,<span class="number">11</span>)(<span class="number">8</span>,<span class="number">10</span>,<span class="number">12</span>), </span><br><span class="line">(<span class="number">3</span>,<span class="number">10</span>,<span class="number">4</span>,<span class="number">9</span>)(<span class="number">5</span>,<span class="number">7</span>)(<span class="number">6</span>,<span class="number">8</span>)(<span class="number">11</span>,<span class="number">12</span>) </span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这个例子没写什么工具，只是在调用函数。GAP 内置了很多群论和代数的工具，光是函数使用文档就有 1438 页。</p>
+<h3 id="定义商对象"><a href="#定义商对象" class="headerlink" title="定义商对象"></a><span id="quotient">定义商对象</span></h3><p>研究中，经常通过自由代数和生成关系定义代数。由于处理的是无限维空间，结构抽象，如果从底层写起会很麻烦，且效率可能很低。但 GAP 提供了构造商结构的工具，这里举两个例子：</p>
+<ol>
+<li><p>用泛性质定义 $A_2$ 的 Weyl 群</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># n 元自由群</span></span><br><span class="line">G := FreeGroup(<span class="number">2</span>);; </span><br><span class="line"><span class="comment"># 生成元</span></span><br><span class="line">gen := GeneratorsOfGroup(G);; </span><br><span class="line">s1 := gen[<span class="number">1</span>];;s2 := gen[<span class="number">2</span>];;</span><br><span class="line"><span class="comment"># 生成关系</span></span><br><span class="line">K := [s1^<span class="number">2</span>, s2^<span class="number">2</span>, (s1*s2)^<span class="number">3</span>];;</span><br><span class="line"><span class="comment"># 商群</span></span><br><span class="line">A2 := G/K; </span><br></pre></td></tr></table></figure></li>
+<li><p>用内置函数定义 Weyl 群，并检验同构性</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单李代数</span></span><br><span class="line">L := SimpleLieAlgebra(<span class="string">&quot;A&quot;</span>,<span class="number">2</span>,Rationals);;</span><br><span class="line">R := RootSystem(L);; <span class="comment"># 根系</span></span><br><span class="line">W := WeylGroup(R);; <span class="comment"># weyl 群（矩阵群）</span></span><br><span class="line"><span class="comment"># 建立同构</span></span><br><span class="line">IsomorphismGroups(A2,W);</span><br></pre></td></tr></table></figure>
+<p> <code>IsomorphismGroups</code> 返回群之间的同构映射<br> <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20211113214348.png" alt="深度截图_选择区域_20211113214348"></p>
+</li>
+<li><p>用自由李代数和 Serre 关系定义 $A_1$ 型李代数</p>
+ <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自由李代数</span></span><br><span class="line">L := FreeLieAlgebra( Rationals, <span class="string">&quot;e&quot;</span>, <span class="string">&quot;f&quot;</span>, <span class="string">&quot;h&quot;</span> );;</span><br><span class="line">gens := GeneratorsOfAlgebra( L );;</span><br><span class="line">e := gens[<span class="number">1</span>];; f:=gens[<span class="number">2</span>];; h:= gens[<span class="number">3</span>];;</span><br><span class="line"><span class="comment"># 生成关系</span></span><br><span class="line">R := [LieBracket(e,f)-hh,</span><br><span class="line">      LieBracket(h,e)-<span class="number">2</span>*ee,</span><br><span class="line">      LieBracket(h,f)+<span class="number">2</span>*ff];;</span><br><span class="line"><span class="comment"># 商李代数</span></span><br><span class="line">A1 := L/R;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/07/14/topology/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">拓扑讲义</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/07/06/tutoring/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">代数相关</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">致宏</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%94%A0%E5%94%A0%E9%97%B2%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">唠唠闲话</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%A2%E4%BD%8D%E5%AD%90%E9%9B%86"><span class="nav-number">1.0.1.</span> <span class="nav-text">换位子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%95%86%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.0.2.</span> <span class="nav-text">定义商对象</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

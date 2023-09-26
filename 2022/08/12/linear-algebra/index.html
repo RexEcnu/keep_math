@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Math&amp;Computer">
+    <meta name="author" content="致宏">
+    
+    <title>
+        
+            线性代数 |
+        
+        学习小站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"math.wzhecnu.xyz","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                学习小站
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">线性代数</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">致宏</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-08-12 10:05:18
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6/">大学数学</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>线性代数基础知识及其他学习专题，内容按时间倒序排列。</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0%EF%BC%88%E7%AC%AC%E4%BA%94%E7%89%88%EF%BC%89%E5%BC%A0%E7%A6%BE%E7%91%9E.pdf" >高等代数（北大第五版）<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/2022%E5%B9%B4%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E4%B8%98%E6%88%90%E6%A1%90%E6%95%B0%E5%AD%A6%E9%A2%86%E5%86%9B%E8%AE%A1%E5%88%92%E6%8A%A5%E8%80%83%E6%8C%87%E5%8D%97%EF%BC%88%E5%86%85%E9%99%84%E5%BE%80%E5%B9%B4%E8%AF%95%E9%A2%98%EF%BC%89.pdf" >丘班试题<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E6%B5%8B%E8%AF%95%E5%8D%B7.pdf" >线性空间+线性变换测试题<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><!-- [高代习题解答](https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021年8月19日-高代-习题解答.pdf) -->
+
+<p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8821%E6%97%A5-%E5%88%86%E6%9E%90%E4%B9%A0%E9%A2%98.pdf" >数分习题<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="线性空间与线性变换"><a href="#线性空间与线性变换" class="headerlink" title="线性空间与线性变换"></a>线性空间与线性变换</h2><h3 id="讲义"><a href="#讲义" class="headerlink" title="讲义"></a>讲义</h3><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8815%E6%97%A5-%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4.pdf" >向量空间<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8816%E6%97%A5-%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2.pdf" >线性变换<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8819%E6%97%A5-%E4%B9%A0%E9%A2%98.pdf" >习题<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="章节要点"><a href="#章节要点" class="headerlink" title="章节要点"></a>章节要点</h3><ol>
+<li>向量空间<ol>
+<li>公理抽象化</li>
+<li>基，维数，坐标</li>
+<li>基变换与坐标变换</li>
+<li>维数公式，直和刻画</li>
+</ol>
+</li>
+<li>线性变换<ol>
+<li>构成代数</li>
+<li>基变换与对应矩阵变换（相似）</li>
+<li>特征值，特征向量及求解方法</li>
+<li>对角化，特征向量无关性</li>
+<li>不变子空间与分块化；根空间分解与零化多项式</li>
+</ol>
+</li>
+<li>Jordan 标准型<ol>
+<li>计算方法</li>
+<li>理论应用</li>
+</ol>
+</li>
+</ol>
+<h2 id="计算相关"><a href="#计算相关" class="headerlink" title="计算相关"></a>计算相关</h2><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8815%E6%97%A5-Laplace%E5%AE%9A%E7%90%86%E4%B8%8E%E5%88%86%E5%9D%97.pdf" >Laplace 定理<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/2021-08-17-%E7%9B%B8%E5%85%B3%E4%B9%A0%E9%A2%98.pdf" >习题<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="二次型"><a href="#二次型" class="headerlink" title="二次型"></a>二次型</h2><h3 id="讲义-1"><a href="#讲义-1" class="headerlink" title="讲义"></a>讲义</h3><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8812%E6%97%A5-%E4%BA%8C%E6%AC%A1%E5%9E%8B.pdf" >二次型<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="内容概要"><a href="#内容概要" class="headerlink" title="内容概要"></a>内容概要</h3><ol>
+<li>二次型定义及二次型矩阵</li>
+<li>线性替换与合同关系</li>
+<li>合同标准型（对角型）</li>
+<li>R 上合同规范型（唯一），正负惯性系数</li>
+</ol>
+<hr>
+<h2 id="行列式与矩阵（扫盲）"><a href="#行列式与矩阵（扫盲）" class="headerlink" title="行列式与矩阵（扫盲）"></a>行列式与矩阵（扫盲）</h2><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8812%E6%97%A5-%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%8E%E7%9F%A9%E9%98%B5.pdf" >讲义-行列式与矩阵<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+<h2 id="群论相关"><a href="#群论相关" class="headerlink" title="群论相关"></a>群论相关</h2><h3 id="讲义-交换群"><a href="#讲义-交换群" class="headerlink" title="讲义-交换群"></a>讲义-交换群</h3><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8812%E6%97%A5-%E4%BA%A4%E6%8D%A2%E7%BE%A4.pdf" >交换群<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="GAP-群同构类"><a href="#GAP-群同构类" class="headerlink" title="GAP-群同构类"></a>GAP-群同构类</h3><p>关于 GAP 的介绍及安装地址：<a class="link"   target="_blank" rel="noopener" href="https://www.gap-system.org/index.html" >GAP<i class="fas fa-external-link-alt"></i></a>。下边代码实际使用的是 SageMath：<a class="link"   target="_blank" rel="noopener" href="https://www.sagemath.org/" >安装地址<i class="fas fa-external-link-alt"></i></a>以及 <a class="link"   target="_blank" rel="noopener" href="https://doc.sagemath.org/" >官方文档<i class="fas fa-external-link-alt"></i></a></p>
+<blockquote>
+<p>关于 sagemath<br>sagemath 语法基于 <code>Python</code> ，也加入了新的语法特性，但直接当 <code>Python</code> 使用也没问题。<br>对研究数学来说，sagemath 有很多优点，例如其提供的接口，支持 Maple, Mathematica, Matlab等等数学语言，用官方的话说，<strong>Sage 希望统一并扩展现有的数学软件</strong>，<a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/program/SageTutorial-%E4%B8%AD%E6%96%87.pdf" >中文文档<i class="fas fa-external-link-alt"></i></a>。<br>Sagemath 内置了 GAP 的函数库，通过 <code>gap</code> 调用，下边是应用例子。</p>
+</blockquote>
+<ol>
+<li>获取低阶群同构数，使用 <code>GAP</code> 函数 <code>NumberSmallGroups</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1-64 阶群的同构数</span></span><br><span class="line">n = <span class="number">8</span></span><br><span class="line">res = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    res.append([])</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        m = i*n + j + <span class="number">1</span> <span class="comment"># group order</span></span><br><span class="line">        res[-<span class="number">1</span>].append((m,gap.NumberSmallGroups(m)))</span><br></pre></td></tr></table></figure>
+<img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/group.png" alt="group_number"></li>
+</ol>
+<blockquote>
+<p>注： 128 阶群： 2328 个；256 阶群： 56092 个</p>
+</blockquote>
+<ol start="2">
+<li>获取 n 阶群的同构类，使用 <code>GAP</code> 函数 <code>AllSmallGroups</code> 和 <code>StructureDescription</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 8 12 阶1群结构</span></span><br><span class="line">g8 = gap.AllSmallGroups(<span class="number">8</span>)</span><br><span class="line">g12 = gap.AllSmallGroups(<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;nonisomorphic groups of order 8 &quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> g8:</span><br><span class="line">    <span class="built_in">print</span>(gap.StructureDescription(i))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nnonisomorphic groups of order 12 &quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> g12:</span><br><span class="line">    <span class="built_in">print</span>(gap.StructureDescription(i))</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>计算结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">## result</span><br><span class="line">nonisomorphic groups of order 8 </span><br><span class="line">C8</span><br><span class="line">C4 x C2</span><br><span class="line">D8</span><br><span class="line">Q8</span><br><span class="line">C2 x C2 x C2</span><br><span class="line"></span><br><span class="line">nonisomorphic groups of order 12 </span><br><span class="line">C3 : C4</span><br><span class="line">C12</span><br><span class="line">A4</span><br><span class="line">D12</span><br><span class="line">C6 x C2</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="多项式"><a href="#多项式" class="headerlink" title="多项式"></a>多项式</h2><h3 id="讲义-2"><a href="#讲义-2" class="headerlink" title="讲义"></a>讲义</h3><p><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%889%E6%97%A5-%E5%A4%9A%E9%A1%B9%E5%BC%8F.pdf" >多项式<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/RexWzh/FileBed/pdf/linear-algebra/Date-2021%E5%B9%B48%E6%9C%8810%E6%97%A5-%E5%AF%B9%E7%A7%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F.pdf" >对称多项式<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="知识概要"><a href="#知识概要" class="headerlink" title="知识概要"></a>知识概要</h3><h4 id="多项式-1"><a href="#多项式-1" class="headerlink" title="多项式"></a>多项式</h4><ol>
+<li>公因式：带余除法，欧几里得算法（辗转相除法）</li>
+<li>互素，不可约性质（uf+vg=1等）</li>
+<li>唯一分解，重因式及判别</li>
+<li>多项式函数</li>
+<li>复数域不可约均一次（代数基本定理）</li>
+<li>实数域不可约一二次</li>
+<li>有理数数域<ul>
+<li>本原积本原（Gauss引理）</li>
+<li>Q上与Z上可约等价</li>
+<li>有理根确定方法，以及秦九韶算法</li>
+<li>不可约判别（充分性）：爱森斯坦判别法</li>
+</ul>
+</li>
+</ol>
+<h4 id="对称多项式"><a href="#对称多项式" class="headerlink" title="对称多项式"></a>对称多项式</h4><ol>
+<li>根与系数 -&gt; 初等对称多项式</li>
+<li>对称多项式基本定理</li>
+<li>重根判别： 对称多项式 -&gt; 关于系数的多项式</li>
+<li>结式判别式</li>
+</ol>
+<hr>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/12/12/weyl-group-extension/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Weyl 群扩张群的结构 | SageMath 实战</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/07/14/topology/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">拓扑讲义</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">致宏</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">习题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E4%B8%8E%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">线性空间与线性变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B2%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">讲义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%A0%E8%8A%82%E8%A6%81%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">章节要点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3"><span class="nav-number">3.</span> <span class="nav-text">计算相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">二次型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B2%E4%B9%89-1"><span class="nav-number">4.1.</span> <span class="nav-text">讲义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E6%A6%82%E8%A6%81"><span class="nav-number">4.2.</span> <span class="nav-text">内容概要</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%8C%E5%88%97%E5%BC%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%EF%BC%88%E6%89%AB%E7%9B%B2%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">行列式与矩阵（扫盲）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E8%AE%BA%E7%9B%B8%E5%85%B3"><span class="nav-number">6.</span> <span class="nav-text">群论相关</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B2%E4%B9%89-%E4%BA%A4%E6%8D%A2%E7%BE%A4"><span class="nav-number">6.1.</span> <span class="nav-text">讲义-交换群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GAP-%E7%BE%A4%E5%90%8C%E6%9E%84%E7%B1%BB"><span class="nav-number">6.2.</span> <span class="nav-text">GAP-群同构类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%B2%E4%B9%89-2"><span class="nav-number">7.1.</span> <span class="nav-text">讲义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E6%A6%82%E8%A6%81"><span class="nav-number">7.2.</span> <span class="nav-text">知识概要</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F-1"><span class="nav-number">7.2.1.</span> <span class="nav-text">多项式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">7.2.2.</span> <span class="nav-text">对称多项式</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

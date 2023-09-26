@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Math&amp;Computer">
+    <meta name="author" content="致宏">
+    
+    <title>
+        
+            代数编程 | 仿射 Weyl 群上的几何性质 |
+        
+        学习小站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"math.wzhecnu.xyz","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                学习小站
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">代数编程 | 仿射 Weyl 群上的几何性质</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">致宏</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-05-10 18:34:45
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/sage/">sage</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CAS/">CAS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Lie/">Lie</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <blockquote>
+<p>文章设置了主页隐藏，内容可能不完整，正在撰写中。。。</p>
+</blockquote>
+<h1 id="唠唠闲话"><a href="#唠唠闲话" class="headerlink" title="唠唠闲话"></a>唠唠闲话</h1><h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>去年讨论班，为了理解 <a href="#http://qiniu.wzhecnu.cn/coxeter/2_Braid%20group%20action%20and%20quantum%20affine%20algebras%20CMP%20Beck%201994.pdf">Becker 文章</a> 提到的图自同构子群，对仿射 Weyl 群的几何性质做了整理探究。<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/2021-11-17_08-50-01.jpg" alt="2021-11-17_08-50-01"></p>
+<h3 id="关于图自同构"><a href="#关于图自同构" class="headerlink" title="关于图自同构"></a>关于图自同构</h3><p>定义及性质：</p>
+<ol>
+<li><p>令 $\Phi_{fin}$ 为有限型根系，其单根系选取不唯一，取 $\Pi_{fin}$ 为其中一个单根系。</p>
+</li>
+<li><p>Weyl 群 $W_{fin}$ 元素诱导单根系之间的置换，其自然作成 $Aut(\Phi_{fin})$ 子群，且有<br>$$w\Pi_{fin}=w’\Pi_{fin}\Leftrightarrow w=w’$$</p>
+</li>
+<li><p>令 $\Gamma_{fin}$ 为根系 $\Pi_{fin}$ 的自同构群，则其自然作成 $Aut(\Phi_{fin})$ 的子群，且有<br>$$Aut(\Phi_{fin})\cong W_{fin}\rtimes\Gamma_{fin}$$</p>
+</li>
+<li><p>具体地，图自同构有如下计算方法<br>$$<br>\begin{align*}<br>  &amp;\sigma\in Aut(\Phi_{fin})\<br> \Rightarrow\ &amp;\sigma \Pi_{fin}=\Pi’=w\Pi_{fin},\ \exists\ w\in W_{fin}\<br> \Rightarrow\ &amp;w^{-1}\sigma \Pi_{fin}=\Pi_{fin}\<br> \Rightarrow\ &amp;w^{-1}\sigma\in \Gamma_{fin}<br>\end{align*}<br>$$</p>
+</li>
+<li><p>图自同构是单根间的置换，在 Dynkin 图上体现为图的自同构。从半直积关系可以看出，$\Gamma_{fin}$ 作为 $Aut(\Phi_{fin})$ 的子群，选取不唯一，与单根系选取相对应。</p>
+</li>
+</ol>
+<p>Ps：当讨论涉及根格，三角分解和 Verma 模等时，都隐含了单根系的选取，此时 $\Gamma_{fin}$ 唯一确定。</p>
+<h3 id="文献结论"><a href="#文献结论" class="headerlink" title="文献结论"></a>文献结论</h3><p>Bourbaki <a href="#http://qiniu.wzhecnu.cn/coxeter/Nicolas%20Bourbaki%20-%20Lie%20Groups%20and%20Lie%20Algebras_%20Chapters%204-6.pdf">文献 [B]</a> 的 5.2.3 给出了下边关系<br>$$<br>\begin{align*}<br>Let\qquad G&amp;= Aut(\Phi_{fin})\ltimes P^\vee\<br>   W_e     &amp;= W_{fin}\ltimes P^\vee\<br>   W_{aff} &amp;= W_{fin}\ltimes Q^\vee\<br> then\qquad\<br>  G/W_e &amp;\cong Aut(\Phi_{fin})/W_{fin}\cong\Gamma_{fin}\ &amp;(1)\<br>  W_e/W_{aff}&amp;\cong P^\vee/Q^\vee\cong\Gamma’&amp;(2)\<br>  G/W_{aff}&amp;\cong \left(Aut(\Phi_{fin})/W_{fin}\right)\ltimes (P^\vee/Q^\vee)&amp;(3)\<br>  &amp;\cong\Gamma_{fin}\ltimes\Gamma’\cong\Gamma<br>\end{align*}<br>$$</p>
+<p>记号如下： </p>
+<ul>
+<li>$W_e$ 为扩张仿射 Weyl 群</li>
+<li>$W_{aff}$ 为仿射 Weyl 群</li>
+<li>$W_{fin}$ 为有限型的 Weyl 群</li>
+<li>$Aut(\Phi_{fin})$ 为有限型根系的自同构群</li>
+<li>$P^\vee,\ Q^\vee$ 分别为权格对偶和根格对偶 </li>
+<li>$\Gamma$ 为仿射型的图自同构群</li>
+<li>$\Gamma_{fin}$ 为有限型的图自同构群</li>
+</ul>
+<p>其中 $\Gamma’$ 为 Becker 文献中提到的图自同构子群</p>
+<h2 id="探究结论"><a href="#探究结论" class="headerlink" title="探究结论"></a>探究结论</h2><p>特别地，<br>$$<br>\begin{align*}<br>  W_e &amp;\cong W_{aff}\rtimes \Gamma’\<br>      &amp;\cong W_{fin}\ltimes P^\vee\<br>      &amp;\cong (W_{fin}\ltimes Q^\vee)\rtimes\Gamma’\<br>  \Gamma’&amp;\cong P^\vee/Q^\vee<br>\end{align*}<br>$$</p>
+<p>$\Gamma’$ 的元素唯一分解为平移变换 $x$ 和线性变换 $w$：<br>$$<br>\begin{align*}<br>  \forall\ \sigma\in\Gamma’,\ \exists!\ x\in P^\vee\setminus Q^\vee,\ w\in W_{fin}\ s.t.\ \sigma=w\cdot t_x<br>\end{align*}<br>$$</p>
+<p>考虑下边表格：</p>
+<table>
+<thead>
+<tr>
+<th align="center">仿射型 GCM $A_{aff}$</th>
+<th align="center">$\widetilde{A}_l$</th>
+<th align="center">$\widetilde{B}_l$</th>
+<th align="center">$\widetilde{C}_l$</th>
+<th align="center">$\widetilde{D}_l$</th>
+<th align="center">$\widetilde{E}_6$</th>
+<th align="center">$\widetilde{E}_7$</th>
+<th align="center">$\widetilde{E}_8$</th>
+<th align="center">$\widetilde{F}_4$</th>
+<th align="center">$\widetilde{G}_2$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">有限型 GCM $A_{fin}$</td>
+<td align="center">$A_l$</td>
+<td align="center">$B_l$</td>
+<td align="center">$C_l$</td>
+<td align="center">$D_l$</td>
+<td align="center">$E_6$</td>
+<td align="center">$E_7$</td>
+<td align="center">$E_8$</td>
+<td align="center">$F_4$</td>
+<td align="center">$G_2$</td>
+</tr>
+<tr>
+<td align="center">仿射型图同构群 $\Gamma_{aff}$</td>
+<td align="center">$D_{2(l+1)}$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">$\begin{cases}\mathbb{Z}_4\rtimes\mathbb{Z}_2,&amp;l&gt;4\S_4, &amp; l=14\end{cases}$</td>
+<td align="center">$S_3$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">有限型图同构群 $\Gamma_{fin}$</td>
+<td align="center">$\begin{cases}1,&amp;l=1\\mathbb{Z}_2, &amp; l&gt;1\end{cases}$</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">$\begin{cases}\mathbb{Z}_2,&amp;l&gt;4\S_3, &amp; l=4\end{cases}$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">图同构子群 $\Gamma’\cong P^\vee/Q^\vee$</td>
+<td align="center">$\mathbb{Z}_{l+1}$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">$\begin{cases}\mathbb{Z}_4,&amp;l\ is\ odd\\mathbb{Z}_2\times\mathbb{Z}_2, &amp; l\ is\ even\end{cases}$</td>
+<td align="center">$\mathbb{Z}_3$</td>
+<td align="center">$\mathbb{Z}_2$</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>由最后一行知：</p>
+<ul>
+<li>情形 $F_2,G_2$ 和 $E_8$ ：图同构子群 $\Gamma’$ 为平凡群；</li>
+<li>情形 $D_{2k}$ ： $\Gamma’\cong K_4$ 由两个元素生成</li>
+<li>余下情形： $\Gamma’$ 为非平凡循环群</li>
+</ul>
+<p>令 ${\omega_i}_{i=1}^n$ 为有限型的基本权，相关公式的构造如下：</p>
+<p>$$<br>\begin{array}{|c|c|c|}<br>\hline<br>Type &amp; 平移\ x &amp; \text{Weyl 群元素 } w\<br>\hline<br>A_l<br>  &amp; h_{\omega_l}=\frac{1}{l+1}\sum\limits_{i=1}^lih_i<br>  &amp; s_ls_{l-1}\cdots s_1 \<br>B_l(l\geq 3)<br>  &amp; h_{\omega_1}=\frac 12h_l+\sum\limits_{i=1}^{l-1}h_i<br>  &amp; s_1s_2\cdots s_{l-1}s_ls_{l-1}\cdots s_1 \<br>C_l(l\geq 2)<br>  &amp; h_{\omega_l}=\frac 12\sum\limits_{i=1}^lih_i<br>  &amp; w_1w_2\cdots w_l\<br>D_l(l为奇数) &amp; h_{\omega_l}=\frac{1}{2}\sum\limits_{i=1}^{l-2}ih_i+\frac{1}{4}((l-2)h_{l-1}+lh_l &amp; w_1^-w_2^+\cdots w_{l-1}^+\<br>D_l(l为偶数）<br>  &amp; h_{\omega_l},\ h_{\omega_{l-1}}-h_{\omega_l}=\frac{1}{2}(h_{l-1}-h_{l})<br>  &amp; w_1^-w_2^+\cdots w_{l-1}^-,w_2^+s_0s_1\cdots s_{l-1} \<br>E_6<br>  &amp; h_{\omega_6}=\frac{1}{3}(2h_1+3h_2+4h_4+6h_4+5h_5+4h_6)<br>  &amp; w_1s_4s_3s_5s_4s_2w_3s_1 \<br>E_7<br>  &amp; h_{\omega_7}=\frac{1}{2}(2h_1+3h_2+4h_4+6h_4+5h_5+4h_6+3h_7)<br>  &amp; w_1s_4s_3s_5s_4s_2s_6s_5s_4s_3s_1w_2s_4s_5s_6s_7\<br>  \hline<br>\end{array}<br>$$</p>
+<p>其中<br>$$<br>\begin{align*}<br>  w_i&amp;=s_ls_{l-1}\cdots s_1\<br>  w_i^+&amp;=s_{l-1}s_{l-2}\cdots s_i\<br>  w_i^-&amp;=s_ls_{l-2}s_{l-3}\cdots s_i<br>\end{align*}<br>$$</p>
+<h3 id="公式思路"><a href="#公式思路" class="headerlink" title="公式思路"></a>公式思路</h3><p>平移部分：</p>
+<ul>
+<li>图自同构 $\Leftrightarrow$ 单根自同构 $\Leftrightarrow$ alcove 的自同构（几何）</li>
+<li>平移要用 alcove 的顶点，恰好为基本权 ${\omega_i}_{i=1}^n$ </li>
+<li>$D_{2k}$ 情形取了 $x=h_{\omega_{l-1}}-h_{\omega_l}$，因而 Weyl 群公式带 $s_0$</li>
+</ul>
+<p>Weyl 群部分：</p>
+<ol>
+<li>观察图像，得 $A_2$ 公式 $s_2s_1$，并证明一般情形 $s_ls_{l-1}\cdots s_1$</li>
+<li>遍历低阶 weyl 群，得出各类型的公式；公式可证，但说明不了简约性，此外群阶为 $O(n!)$</li>
+<li>借助偏序给出升链算法，简约性立得，且复杂度至多 $O(n^3)$（手算级别）</li>
+<li>表达式含义：<strong>抛物子群最小陪集的最长元</strong></li>
+</ol>
+<p>Ps：结构越丰富，性质越好证。</p>
+<h2 id="内容安排"><a href="#内容安排" class="headerlink" title="内容安排"></a>内容安排</h2><p>本篇整理 Weyl 群几何直观的相关结论，研究目的：</p>
+<ol>
+<li>理解几何结构，有利于公式推导和证明，也利于编程</li>
+<li>上周南大报告讲 <a class="link"   target="_blank" rel="noopener" href="http://qiniu.wzhecnu.cn/coxeter/Reflection%20Groups%20and%20Coxeter%20Groups%20.pdf" >Weyl groupoids<i class="fas fa-external-link-alt"></i></a> 的几何直观，空间剖分方式和 Weyl 群很类似。李理论的理解清楚了，方便类比到 Nicholas 代数。</li>
+</ol>
+<h3 id="文章安排"><a href="#文章安排" class="headerlink" title="文章安排"></a>文章安排</h3><ol>
+<li>根空间剖分与反射群的组合性质</li>
+<li>有限型的推广方法<ul>
+<li>沿用原来方法</li>
+<li>取对偶空间（Humphreys 5.13）</li>
+<li>先补维再模维（GCM）</li>
+</ul>
+</li>
+<li>尝试：编程猜想+编程证明</li>
+</ol>
+<hr>
+<h1 id="反射群"><a href="#反射群" class="headerlink" title="反射群"></a>反射群</h1><h2 id="定义记号"><a href="#定义记号" class="headerlink" title="定义记号"></a>定义记号</h2><ol>
+<li><p>基本定义 $(\Pi,S,W,\Phi,V)$</p>
+<ul>
+<li>$\Pi={\alpha_i}_{i=1}^n$ 为单根系</li>
+<li>$S={s_i}_{i=1}^n$ 为单反射集</li>
+<li>$W=\langle s\mid s\in S\rangle$ 为反射群</li>
+<li>$\Phi=W\Pi$ 为根系</li>
+<li>$V=span\Pi$ 为根空间</li>
+</ul>
+</li>
+<li><p>令 $I\subseteq S$ 为单反射子集，得到子结构<br>$$(\Pi_I,I,W_I,\Phi_I,V_I)$$<br>其中 $W_I=\langle s\mid s\in I\rangle$ 称为 $W$ 的抛物子群。</p>
+</li>
+<li><p>长度函数记为 l，简约表达（略）。</p>
+</li>
+<li><p>$W_I$ 的最小（左）陪集定义为<br>$$<br>\begin{align*}<br>  W^I:=&amp;{w\in W\mid l(w)\leq l(ws),\ \forall s\in I}\<br>=&amp;{w\in W\mid l(w)\leq l(u),\quad \forall u\in wW_I}<br>\end{align*}<br>$$</p>
+</li>
+<li><p>容易得到<br>$$l(u\cdot v)=l(u)+l(v),\ \forall\ u\in W^I,\ v\in W_I$$</p>
+</li>
+</ol>
+<h2 id="几何性质"><a href="#几何性质" class="headerlink" title="几何性质"></a>几何性质</h2><p>基本定义：</p>
+<ul>
+<li>记 $\langle,\rangle$ 为 $V$ 上的內积，$\alpha\in\Phi$</li>
+<li>$L_\alpha={\lambda\in V\mid \langle\lambda,\alpha\rangle=0}$ 为墙</li>
+<li>$U_\alpha={\lambda\in V\mid \langle\lambda,\alpha\rangle &gt;0}$ 为半平面</li>
+<li>$C=\bigcap\limits_{\alpha\in\Pi}U_\alpha$ 为基本室(fundamental chamber)</li>
+<li>$D=\bar{C}=\bigcap\limits_{\alpha\in\Pi}(U_\alpha\cup L_\alpha)$ 为基本区域</li>
+</ul>
+<p>$A_2$ 例子：<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/20211117165352.png" alt="20211117165352"></p>
+<p>$\forall\ \lambda,\mu\in V$ ，定义偏序关系<br>$$<br>\lambda\geq\mu \Leftrightarrow \lambda-\mu=\sum_{i=1}^nk_i\alpha_i,\ where\ k_i\in \mathbb{R}_{\geq 0}<br>$$<br>特别地，考虑单反射 $s_i$ 作用，$\lambda$ 与 $s_i\lambda$ 必有大小关系<br>$$s_i\lambda-\lambda=\frac{2\langle\alpha_i,\lambda\rangle}{\langle\alpha_i,\alpha_i\rangle}\alpha_i$$</p>
+<h3 id="子结构"><a href="#子结构" class="headerlink" title="子结构"></a>子结构</h3><p>考虑子结构 $(\Pi_I,I,W_I,\Phi_I,V_I)$，令<br>$$<br>\begin{align*}<br>  C_I:=&amp;\left{\lambda\in D\mid<br>\langle\lambda,\alpha\rangle=0,\ \alpha\in\Pi_I ,\<br>\langle\lambda,\alpha\rangle&gt; 0,\ \alpha\in\Pi\setminus\Pi_I<br>\right}\<br>=&amp;(\bigcap_{\alpha\in\Pi_I}L_\alpha)\cap(\bigcap_{\alpha\in\Pi\setminus\Pi_I}U_\alpha)<br>\end{align*}<br>$$</p>
+<p>我们称 $C_I$ 为“小面” facet，其上任一点的稳定子群为抛物子群 $W_I$：<br>$$stab(x)=W_I,\ \forall x\in C_I$$</p>
+<p>特别地，两种极端情形如下<br>$$<br>C_\phi=C,\ W^\phi=W\<br>C_S=0,\ W^S=0<br>$$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhihongecnu/PicBed/picgo/2021-12-03_19-51-22.jpg" alt="2021-12-03_19-51-22"></p>
+<p>注记：</p>
+<ol>
+<li>小面 $C_I$ 的“维数”越大，稳定子群 $W_I$ 越小，最小陪集 $W^I$ 相应越大。</li>
+<li>小面公式 = 邻近大面中的最小公式</li>
+</ol>
+<h3 id="主要定理"><a href="#主要定理" class="headerlink" title="主要定理"></a>主要定理</h3><ol>
+<li><p>抛物子群的最小陪集 $W^I$ 与 $V$ 的小面一一对应<br>$$<br>W^I\longrightarrow{wC_I\mid w\in W^I}<br>$$</p>
+</li>
+<li><p>特别地，反射群与 $V$ 的室（chamber）一一对应<br>$$<br>W\longrightarrow{wC\mid w\in W}<br>$$</p>
+</li>
+<li><p>所有小面互不相交，作成空间 $V$ 的剖分<br>$$<br>V=\bigcup_{I\subseteq  S}^.\bigcup_{w\in W^I}^.wC_I<br>$$</p>
+</li>
+<li><p>引理：小面 $C_I$ 满足如下性质，用于构造升链<br>$$if\ x\notin C_I，then\ \exists\ s_i\in\Pi\ s.t.\ s_ix&gt;x$$</p>
+</li>
+<li><p>算法：$\forall\ x\in V$，借助升链给出 $x$ 所在小面的表达式</p>
+<ul>
+<li>设 $W_I=stab(x)$，则 $x$ 落在 $C_I$ 的轨道上</li>
+<li>取 $x$ 的一条升链<br>$$<br>x=x_0\overset{s_1}{\rightarrow}x_1\overset{s_2}\rightarrow\cdots\overset{s_k}\rightarrow x_k<br>$$</li>
+<li>由于反射群为有限群，不妨设升链取极大，此时 $x_k\in C_I$，继而<br>$$<br>x_ks_ks_{k-1}\cdots s_1x\in C_I \Rightarrow\ x\in s_1s_2\cdots s_kC_I<br>$$</li>
+</ul>
+</li>
+</ol>
+<p>Ps：升链技巧出现在 <a class="link"   target="_blank" rel="noopener" href="http://qiniu.wzhecnu.cn/coxeter/Reflection%20Groups%20and%20Coxeter%20Groups%20.pdf" >Humphreys 1.12<i class="fas fa-external-link-alt"></i></a> 引理的证明。</p>
+<hr>
+<h1 id="最长元公式"><a href="#最长元公式" class="headerlink" title="最长元公式"></a>最长元公式</h1><h2 id="公式化归"><a href="#公式化归" class="headerlink" title="公式化归"></a>公式化归</h2><p>考虑一般问题：$\forall\ I\subseteq S$，求 $W^I$ 的最长元公式。</p>
+<ol>
+<li>若 $I=S$，则 $W^I=1$，问题平凡</li>
+<li>若 #$(S\setminus I)&gt;1$，设 $I\subset J\subset S$<br>$$<br>\begin{align*}<br>  Let\quad W&amp;=W^IW_I=W^JW_J\<br>  W_J&amp;=W^{I’}W_I\<br>  then\qquad\<br>  W&amp;=W^JW_J=W^JW^{I’}W_I\<br>Thus\quad W^I&amp;=W^JW^{I’}<br>\end{align*}<br>$$<br>即 $W^I$ 的最长元公式拆分为两段。</li>
+<li>综上，只需求 $I=S\setminus{s_i}$ 情形的一般公式，通过拼凑得到任意抛物子群的最长元。</li>
+</ol>
+<p>Ps：下一步化归非连通情形，最后归结为几组公式。</p>
+<h2 id="最长元的几何直观"><a href="#最长元的几何直观" class="headerlink" title="最长元的几何直观"></a>最长元的几何直观</h2><ol>
+<li>设 $w_0$ 为反射群的最长元，容易证明 $w_0C=-C$。</li>
+<li>设 $w_0^I$ 为最小陪集 $W^I$ 的最长元，则 $w_0^IC_I\subseteq -C$，证明如下<br> $$<br> \begin{align*}<br>   Let\ w_0&amp;=w_0^I\cdot v\in\ W^IW_I\<br> then\ w_0^IC_I&amp;=w_0^IvC_I\<br> &amp;=w_0C_I\subseteq -C<br> \end{align*}<br> $$<br>注记：</li>
+<li>$-C$ 所有小面的表达式都是陪集最长元</li>
+<li>$w_0^IC_I$ 未必等于 $-C_I$，比如 $A_2$</li>
+<li>当 $-1\in W$ 时，必有 $w_0^IC_I=-C_I$</li>
+</ol>
+<h2 id="A2-例子"><a href="#A2-例子" class="headerlink" title="A2 例子"></a>A2 例子</h2><p><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/20211117165855.png" alt="20211117165855"></p>
+<h1 id="Coxeter-群"><a href="#Coxeter-群" class="headerlink" title="Coxeter 群"></a>Coxeter 群</h1><h2 id="关于-GCM"><a href="#关于-GCM" class="headerlink" title="关于 GCM"></a>关于 GCM</h2><h2 id="直接推广"><a href="#直接推广" class="headerlink" title="直接推广"></a>直接推广</h2><p>群作用空间的剖分技巧，取余维一的超空间，在平面跑动，分割，取法不唯一。取基本权，可以和根格权格建立联系，几何性质更好控制。（“坐标系”的选取）</p>
+<p>按几何性质，不存在超平面产生仿射效果<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/2021-11-18_04-33-28.jpg" alt="2021-11-18_04-33-28"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/20211117170454.png" alt="20211117170454"></p>
+<h2 id="取对偶空间"><a href="#取对偶空间" class="headerlink" title="取对偶空间"></a>取对偶空间</h2><p>取对偶空间上的几何<br><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/2021-11-18_04-34-14.jpg" alt="2021-11-18_04-34-14"></p>
+<h1 id="仿射-Weyl-群上的几何"><a href="#仿射-Weyl-群上的几何" class="headerlink" title="仿射 Weyl 群上的几何"></a>仿射 Weyl 群上的几何</h1><p><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/2021-11-18_04-34-54.jpg" alt="2021-11-18_04-34-54"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed@picgo/picgo_folder/20211117170946.png" alt="20211117170946"></p>
+<h2 id="A3"><a href="#A3" class="headerlink" title="A3"></a>A3</h2><h1 id="编程尝试"><a href="#编程尝试" class="headerlink" title="编程尝试"></a>编程尝试</h1><p>（理论角度比较肤浅。）<br>拆两个函数，一个猜公式，一个证公式。<br><a class="link"   target="_blank" rel="noopener" href="http://qiniu.wzhecnu.cn/%E4%BB%BF%E5%B0%84%E6%9D%8E%E4%BB%A3%E6%95%B0%20EAWG%E7%BB%93%E8%AE%BA.pdf" >公式推导<i class="fas fa-external-link-alt"></i></a></p>
+<p>考虑这个问题的好处：<br>验证公式在空间 H 上，分解称基元的线性组合。证明其实是对系数向量归纳（线性代数）。</p>
+<a href="#">Post not found: programming/others/lean-intro</a>
+
+<!-- ---
+
+小结，一个简单的示例，但这种处理过程，实验与理论相互推进，很符合我个人设想的“代数编程的研究范式”。
+
+研究中，编程起两个重要作用：
+1. 导出公式
+2. 验证公式！ -->
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/05/04/public-key-system/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">非对称加密系统 | 量子系列</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">致宏</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%94%A0%E5%94%A0%E9%97%B2%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">唠唠闲话</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">问题背景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%9B%BE%E8%87%AA%E5%90%8C%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">关于图自同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E7%BB%93%E8%AE%BA"><span class="nav-number">1.1.2.</span> <span class="nav-text">文献结论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E7%A9%B6%E7%BB%93%E8%AE%BA"><span class="nav-number">1.2.</span> <span class="nav-text">探究结论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">公式思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E5%AE%89%E6%8E%92"><span class="nav-number">1.3.</span> <span class="nav-text">内容安排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%AE%89%E6%8E%92"><span class="nav-number">1.3.1.</span> <span class="nav-text">文章安排</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%B0%84%E7%BE%A4"><span class="nav-number">2.</span> <span class="nav-text">反射群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E8%AE%B0%E5%8F%B7"><span class="nav-number">2.1.</span> <span class="nav-text">定义记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E6%80%A7%E8%B4%A8"><span class="nav-number">2.2.</span> <span class="nav-text">几何性质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">2.2.1.</span> <span class="nav-text">子结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%AE%9A%E7%90%86"><span class="nav-number">2.2.2.</span> <span class="nav-text">主要定理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%83%E5%85%AC%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">最长元公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E5%BC%8F%E5%8C%96%E5%BD%92"><span class="nav-number">3.1.</span> <span class="nav-text">公式化归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%83%E7%9A%84%E5%87%A0%E4%BD%95%E7%9B%B4%E8%A7%82"><span class="nav-number">3.2.</span> <span class="nav-text">最长元的几何直观</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A2-%E4%BE%8B%E5%AD%90"><span class="nav-number">3.3.</span> <span class="nav-text">A2 例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Coxeter-%E7%BE%A4"><span class="nav-number">4.</span> <span class="nav-text">Coxeter 群</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-GCM"><span class="nav-number">4.1.</span> <span class="nav-text">关于 GCM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8E%A8%E5%B9%BF"><span class="nav-number">4.2.</span> <span class="nav-text">直接推广</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%96%E5%AF%B9%E5%81%B6%E7%A9%BA%E9%97%B4"><span class="nav-number">4.3.</span> <span class="nav-text">取对偶空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BF%E5%B0%84-Weyl-%E7%BE%A4%E4%B8%8A%E7%9A%84%E5%87%A0%E4%BD%95"><span class="nav-number">5.</span> <span class="nav-text">仿射 Weyl 群上的几何</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A3"><span class="nav-number">5.1.</span> <span class="nav-text">A3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%B0%9D%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">编程尝试</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>

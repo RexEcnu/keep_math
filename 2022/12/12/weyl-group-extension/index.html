@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Math&amp;Computer">
+    <meta name="author" content="致宏">
+    
+    <title>
+        
+            Weyl 群扩张群的结构 | SageMath 实战 |
+        
+        学习小站
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"math.wzhecnu.xyz","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"mac"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                学习小站
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Weyl 群扩张群的结构 | SageMath 实战</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://cdn.jsdelivr.net/gh/RexWzh/PicBed/images_for_blogs/avatar.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">致宏</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-12-12 14:56:23
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/sage/">sage</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/CAS/">CAS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Lie/">Lie</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="唠唠闲话"><a href="#唠唠闲话" class="headerlink" title="唠唠闲话"></a>唠唠闲话</h1><p>本篇用 GAP 和 SageMath 研究 Weyl 群扩张群的结构，顺带演示编程能做什么样的任务，以及是怎么完成的。</p>
+<!-- 本篇研究对象为内自同构群 $Inn(L)$ 的子群 $\widetilde{W}$，论证方法也适用于一般的 Kac-Moody 代数。 -->
+
+<p>内容安排如下：</p>
+<ul>
+<li><a href="#notation">记号及问题</a></li>
+<li><a href="#structure">$\widetilde{W}的结构$</a></li>
+<li><a href="#universal">$\widetilde{W}$的泛性质</a></li>
+<li><a href="#summarize">总结及延伸</a></li>
+</ul>
+<hr>
+<h1 id="记号，问题及结论"><a href="#记号，问题及结论" class="headerlink" title="记号，问题及结论"></a><span id="notation">记号，问题及结论</span></h1><h2 id="记号和问题"><a href="#记号和问题" class="headerlink" title="记号和问题"></a>记号和问题</h2><ol>
+<li><p>符号和定义<br>$$<br>\begin{array}{|c|c|c|}<br>\hline<br>符号 &amp; 定义 &amp; 补充\\hline<br>L&amp;复数域上半单李代数&amp; -\\hline<br>H&amp;Cartan 子代数 &amp; -\\hline<br>S&amp;单反射集 &amp; S={s_i}<em>{i=1}^n\\hline<br>W=\langle S\rangle&amp;Weyl 群 &amp; -\\hline<br>A&amp;Cartan 矩阵 &amp; A=(A</em>{ij})<em>{n\times n}\\hline<br>(\Phi,\Pi)&amp;根系和单根系 &amp; -\\hline<br>{e_i,f_i,h_i}</em>{i=1}^n&amp; L 的代数生成元 &amp; -\\hline<br>Der(L)&amp;导子代数 &amp; -\\hline<br>e^\delta,\delta\in Der(L)&amp; 幂零导子诱导同构 &amp; e^\delta:=\sum\limits_{k=0}^\infty \frac{1}{k!}\delta^k\\hline<br>Inn(L)&amp;内自同构群 &amp; 由 e^{adx} 生成，x\in L 且 adx 幂零\\hline<br>\end{array}<br>$$</p>
+<p>特别地，由于伴随作用 $ade_i,adf_i$ 为幂零导子，定义内自同构<br>$$<br>   \theta_i=e^{ade_i}e^{-adf_i}e^{ade_i}<br>$$<br>记 $\theta_i$ 生成的群为 $\widetilde{W}$，即<br>$$<br>   \widetilde{S}={\theta_i}_{i=1}^n,\<br>   \widetilde{W}=\langle \widetilde{S}\rangle<br>$$</p>
+</li>
+<li><p>$\widetilde{W}$ 的群结构是本篇的研究内容，具体地，从 $Weyl$ 群半直积角度与自由群商两个角度进行讨论。</p>
+</li>
+<li><p>定义内自同构子群 $\widetilde{W}$ 到 Weyl 群的映射 $\varphi$：<br>$$<br>\begin{aligned}<br>   \varphi : Inn(L)&amp;\rightarrow W\</p>
+<pre><code>        \tilde&#123;w&#125;&amp;\mapsto \left.\tilde&#123;w&#125;\right|_H
+</code></pre>
+<p>\end{aligned}<br>$$<br>由 <a class="link"   target="_blank" rel="noopener" href="http://qiniu.wzhecnu.cn/chapter-7-Lie%20algebras%20of%20finite%20and%20affine.pdf" >Carter prop.7.18<i class="fas fa-external-link-alt"></i></a> 知，$\varphi$ 为满的群同态且 $\varphi(\theta_i)=s_i$</p>
+</li>
+<li><p>记群同态的核 $\widetilde{K}=ker(\varphi)$，则有<br>$$<br>   \widetilde{W}/\widetilde{K}\cong W, \<br>   \widetilde{W}\cong\widetilde{K}\rtimes_\sigma W<br>$$</p>
+</li>
+</ol>
+<h2 id="主要结论"><a href="#主要结论" class="headerlink" title="主要结论"></a>主要结论</h2><ol>
+<li><p>$\widetilde{W}\cong K\rtimes_\sigma W$， $K$ 和 $W$ 如下表<br>$$<br>\begin{array}{|c|ccccccccc|}<br>\hline<br>type&amp;A_n&amp;B_n&amp;C_n&amp;D_n&amp;E_6&amp;E_7&amp;E_8&amp;F_4&amp;G_2\\hline<br>K&amp;(C_2)^{2\lfloor\frac 12n\rfloor}&amp;(C_2)^{n-1}&amp;(C_2)^{n-1}&amp;(C_2)^{2\lfloor\frac 12(n-1)\rfloor}&amp;(C_2)^{6}&amp;(C_2)^{7}&amp;(C_2)^{8}&amp;(C_2)^{4}&amp;(C_2)^{2}\\hline<br>W&amp;S_{n+1}&amp;(C_2)^n\rtimes S_n&amp;(C_2)^n\rtimes S_n&amp;(C_2)^{2\lfloor\frac 12(n-1)\rfloor}\rtimes S_n&amp;-&amp;-&amp;-&amp;-&amp;D_{2\cdot 6}\\hline<br>\end{array}<br>$$</p>
+<p>一般地，$K\cong (C_2)^{k_n}$，$k_n$ 为 Cartan 矩阵 $Z_2$ 列空间的维数</p>
+</li>
+<li><p>$\widetilde{W}$ 关于生成元 $\widetilde{S}$ 的泛性质为<br>$$<br>\begin{align*}</p>
+<pre><code>  (\theta_i\theta_j)^&#123;o(s_is_j)&#125;&amp;=
+  \begin&#123;cases&#125;
+  \theta_i^2,&amp; i=j\\
+  \theta_i^2\theta_j^2,&amp; i\neq j,o(s_is_j)=2\\
+  \theta_i^2,&amp; i\neq j,o(s_is_j)\neq 2,\vert\alpha_i\vert=\sqrt 2\vert\alpha_j\vert\\
+  1,&amp; otherwise
+  \end&#123;cases&#125;&amp;(1)\\
+  \theta_j\theta_i^2\theta_j^&#123;-1&#125;&amp;=\begin&#123;cases&#125;
+     \theta_i^2\theta_j^2&amp; A_&#123;ij&#125;\ is\ odd\\
+     \theta_i^2&amp; A_&#123;ij&#125;\ is\ even
+  \end&#123;cases&#125;&amp;(2)\\
+  \theta_i^2\theta_j^2&amp;=\theta_j^2\theta_i^2,\ \forall\ i,j&amp;(3)\\
+  \theta_1^&#123;2\epsilon_1&#125;\theta_2^&#123;2\epsilon_2&#125;\cdots\theta_n^&#123;2\epsilon_n&#125;&amp;=1,\ (\epsilon_1,\epsilon_2,\cdots,\epsilon_n)A=0&amp;(4)
+</code></pre>
+<p>\end{align*}<br>$$</p>
+</li>
+</ol>
+<hr>
+<h1 id="widetilde-W-的结构"><a href="#widetilde-W-的结构" class="headerlink" title="$\widetilde{W}的结构$"></a><span id="structure">$\widetilde{W}的结构$</span></h1><p>先由编程实验获取规律和思路，再推导证明。</p>
+<h2 id="编程实验"><a href="#编程实验" class="headerlink" title="编程实验"></a>编程实验</h2><ol>
+<li><p>易证幂零导子有如下性质，这一性质将用于 $\theta_i$ 的计算<br>$$(ade_i)^k=0\Leftrightarrow (adf_i)^k=0\Leftrightarrow k &gt; \max_{j\neq i}{-A_{ij},2}$$<br>特别地，对 ABCDEF 族单李代数：<br>$$(ade_i)^3=0,\ e^{ade_i}=1+ade_i+\frac{1}{2}(ade_i)^2$$<br>G 族单李代数：<br>$$(ade_i)^4=0,\ e^{ade_i}=1+ade_i+\frac{1}{2}(ade_i)^2+\frac{1}{3!}(ade_i)^3$$</p>
+</li>
+<li><p>由于 $\left.\theta_i^2\right|_H=\left.id\right|_H$ ，记 $K$ 为 $\theta_i^2$ 生成的 $\widetilde{W}$ 子群，则<br>$$K =\langle\theta_i^2\vert i=1,\dots,n\rangle\subseteq\widetilde{K}$$</p>
+</li>
+<li><p>计算观察 $\widetilde{W},K,W$ 三者关系，以 A 型为例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入自编函数 Thetas</span></span><br><span class="line">load(<span class="string">&quot;../src/weyl_group_extension.sage&quot;</span>)</span><br><span class="line"><span class="comment"># compare G,W and K</span></span><br><span class="line">res = [[<span class="string">&#x27;level&#x27;</span>,<span class="string">&#x27;|G|&#x27;</span>,<span class="string">&#x27;|W|&#x27;</span>,<span class="string">&#x27;|K|&#x27;</span>,<span class="string">&#x27;Structure of G&#x27;</span>,<span class="string">&#x27;Structure of W&#x27;</span>,<span class="string">&#x27;Structure of K&#x27;</span>]] </span><br><span class="line">s = <span class="string">&quot;A&quot;</span> <span class="comment"># Lie algebra of type A</span></span><br><span class="line"><span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">8</span>):</span><br><span class="line">   thetas = [gap(mat) <span class="keyword">for</span> mat <span class="keyword">in</span> Thetas(s,n,reduced=<span class="literal">True</span>)]</span><br><span class="line">   G = gap.Group(thetas)</span><br><span class="line">   K = gap.Group([x^<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> thetas])</span><br><span class="line">   W = WeylGroup([s,n])</span><br><span class="line">   res.append([n, gap.Size(G), W.order(), gap.Size(K),</span><br><span class="line">               gap.StructureDescription(G), W.structure_description(), gap.StructureDescription(K)])</span><br><span class="line">table(res)</span><br></pre></td></tr></table></figure>
+<p>$$<br>\begin{array}{|c|cccccc|}<br>\hline<br>Type&amp;|G|&amp;|W|&amp;|K|&amp;Structure of G&amp;Structure of W&amp;Structure of K\\hline<br>A_1&amp;2&amp;2&amp;1&amp;C_2&amp;C_2&amp;1\\hline<br>A_2&amp;24&amp;6&amp;4&amp;S_4&amp;S_3&amp;C_2 \times C_2\\hline<br>A_3&amp;96&amp;24&amp;4&amp;(C_2 \times C_2) : S_4&amp;S_4&amp;C_2 \times C_2\\hline<br>A_4&amp;1920&amp;120&amp;16&amp;(C_2 \times C_2 \times C_2 \times C_2) : S_5&amp;S_5&amp;C_2 \times C_2 \times C_2 \times C_2\\hline<br>A_5&amp;11520&amp;720&amp;16&amp;((C_2 \times C_2 \times C_2 \times C_2) : A_6) : C_2&amp;S_6&amp;C_2 \times C_2 \times C_2 \times C_2\\hline<br>A_6&amp;322560&amp;5040&amp;64&amp;(C_2 \times C_2 \times C_2 \times C_2 \times C_2 \times C_2) : S_7&amp;S_7&amp;C_2 \times C_2 \times C_2 \times C_2 \times C_2 \times C_2\\hline<br>A_7&amp;2580480&amp;40320&amp;64&amp;((C_2 \times C_2 \times C_2 \times C_2 \times C_2 \times C_2) : A_8) : C_2&amp;S_8&amp;C_2 \times C_2 \times C_2 \times C_2 \times C_2 \times C_2\\hline<br>\end{array}<br>$$</p>
+</li>
+<li><p>容易发现以下规律：</p>
+<ol>
+<li>$K=\widetilde{K}$</li>
+<li>$K\cong (C_2)^{k_n}$ 为交换 p-群</li>
+<li>归纳发现，$K$ 的结构有如下规律<br>$$<br>\begin{array}{|c|ccccccccc|}<br>\hline<br>type&amp;A_n&amp;B_n&amp;C_n&amp;D_n&amp;E_6&amp;E_7&amp;E_8&amp;F_4&amp;G_2\\hline<br>K=\widetilde{K}&amp;(C_2)^{2\lfloor\frac 12n\rfloor}&amp;(C_2)^{n-1}&amp;(C_2)^{n-1}&amp;(C_2)^{2\lfloor\frac 12(n-1)\rfloor}&amp;(C_2)^{6}&amp;(C_2)^{7}&amp;(C_2)^{8}&amp;(C_2)^{4}&amp;(C_2)^{2}\\hline<br>W&amp;S_{n+1}&amp;(C_2)^n\rtimes S_n&amp;(C_2)^n\rtimes S_n&amp;(C_2)^{2\lfloor\frac 12(n-1)\rfloor}\rtimes S_n&amp;-&amp;-&amp;-&amp;-&amp;D_{2\cdot 6}\\hline<br>\end{array}<br>$$</li>
+</ol>
+</li>
+</ol>
+<h2 id="理论推导"><a href="#理论推导" class="headerlink" title="理论推导"></a>理论推导</h2><p>下边推导 $K$ 的结构，解释上表规律，计算参看以前的<a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yv411r715" >录课<i class="fas fa-external-link-alt"></i></a>或<a class="link"   target="_blank" rel="noopener" href="http://qiniu.wzhecnu.cn/weyl-extension-handwriting.pdf" >草稿文件<i class="fas fa-external-link-alt"></i></a>。</p>
+<ol>
+<li><p>记 $k=A_{ij}(i\neq j)$，易证<br>$$<br>adf_i^sade_i^re_j=\begin{pmatrix}r\ s\end{pmatrix}\begin{pmatrix}k-r+s\ s\end{pmatrix}s!ade_i^{r-s}e_j\<br>ade_i^sadf_i^rf_j=\begin{pmatrix}r\ s\end{pmatrix}\begin{pmatrix}k-r+s\ s\end{pmatrix}s!adf_i^{r-s}f_j<br>$$<br>继而得到 $\theta_i$ 作用公式：<br>$$<br>\begin{aligned}<br>   \theta_ie_j&amp;=\begin{cases}</p>
+<pre><code>     \frac&#123;1&#125;&#123;k!&#125;(ade_i)^ke_j,&amp; i\neq j\\
+     -f_i,&amp;i=j
+  \end&#123;cases&#125;\\
+</code></pre>
+<p>   \theta_if_j&amp;=\begin{cases}</p>
+<pre><code>     \frac&#123;(-1)^k&#125;&#123;k!&#125;(adf_i)^kf_j,&amp; i\neq j\\
+     -f_i,&amp;i=j
+  \end&#123;cases&#125;\\
+</code></pre>
+<p>\end{aligned}<br>$$</p>
+</li>
+<li><p>推论1：记 $k=A_{ij}$，则<br>$$<br>\theta_i^2e_j=(-1)^ke_j\<br>\theta_i^2f_j=(-1)^kf_j<br>$$</p>
+</li>
+<li><p>推论2：令 $\tau\in Aut(L)$ 如下定义，则有<br>$$<br>\tau(e_i)=-f_i,\ \tau(f_i)=-e_i,\ \tau(h_i)=-h_i\<br>\tau\theta_i\tau=\tau\theta_i\tau^{-1}=\theta_i,\ \forall\ i<br>$$</p>
+</li>
+<li><p>推论3：$\forall\ w\in\widetilde{W}$，$w$ 被其在 ${e_i}_{i=1}^n$ 上的像确定。</p>
+</li>
+<li><p>特别地，由于<br>$$(\theta_i^2e_1,\theta_i^2e_2,\cdots,\theta_i^2e_n)=((-1)^{-A_{i1}}e_1,(-1)^{-A_{i2}}e_2,\cdots,(-1)^{-A_{in}}e_n)$$<br>得到嵌入映射 $\psi$<br>$$<br>\begin{aligned}<br>   \psi :K&amp;\hookrightarrow (C_2)^n\<br>   \theta_i^2&amp;\mapsto row_i(A)<br>\end{aligned}<br>$$<br>容易验证 $\psi$ 为群同态<br>$$<br>\psi(\theta_i^2\cdot\theta_j^2)=\psi(\theta_i^2)+\psi(\theta_j^2)\<br>$$<br>故 $K$ 同构于 Cartan 矩阵的 $\mathbb{Z}<em>2$ 行空间的加法群，也解释了前边表格的规律<br>$$<br>K\cong Im(\psi)\cong span</em>{\mathbb{Z}_2}{row_i(A)|\  \forall\ i}<br>$$</p>
+</li>
+<li><p>举个例子， $A_3$ 的 Cartan 矩阵秩为 2， $K\cong (C_2)^2$<br>$$<br>\left(\begin{array}{rrr}<br>   2 &amp; -1 &amp; 0 \<br>   -1 &amp; 2 &amp; -1 \<br>   0 &amp; -1 &amp; 2<br>   \end{array}\right)\overset{\mathbb{Z_2}}{\Rightarrow}<br>\left(\begin{array}{rrr}<br>   0 &amp; 1 &amp; 0 \<br>   1 &amp; 0 &amp; 1 \<br>   0 &amp; 1 &amp; 0<br>   \end{array}\right)<br>$$</p>
+</li>
+</ol>
+<p>到这一步，我们得到了 $K\subseteq \widetilde{K}$ 的群结构，下边借助 $\widetilde{W}$ 的泛性质，证明反包含关系 $\widetilde{K}\subseteq K$ 。</p>
+<h1 id="widetilde-W-的泛性质"><a href="#widetilde-W-的泛性质" class="headerlink" title="$\widetilde{W}$ 的泛性质"></a><span id="universal">$\widetilde{W}$ 的泛性质</span></h1><p>类似地，先用编程实验“知道”结论，再推导证明。</p>
+<h2 id="编程实验-1"><a href="#编程实验-1" class="headerlink" title="编程实验"></a>编程实验</h2><ol>
+<li><p>设群 $G=\langle X\rangle$，求 $G$ 关于生成元 $X$ 的泛性质。换言之，设 $F(X)$ 为集合 $X$ 上的自由群，求 $F(X)$ 子集 $R(X)$，使得<br>$$<br>F(X)/\overline{R(X)}\cong G<br>$$<br>其中 $\overline{R(X)}$ 为 $R(X)$ 生成的 $F(X)$ 的正规子群。</p>
+</li>
+<li><p>用“群树”求解泛性质，叶子节点为泛性质等式，非叶子节点构成群树，以 $S_3=\langle s_1=(12),s_2=(23)\rangle$ 为例</p>
+<img src="https://cdn.jsdelivr.net/gh/zhihongecnu/PicBed/picgo/2022-01-02_11-35-29.jpg" width="50%">
+叶子节点给出粗糙的泛性质刻画，通过一些规则进一步简化，比如“删除子表达”
+<img src="https://cdn.jsdelivr.net/gh/zhihongecnu/PicBed/picgo/2022-01-02_11-35-38.jpg" width="50%">
+
+<!-- 注：“群树”是本科学近世代数时自拟的概念。 --></li>
+<li><p>比如 $A_3$ 情形</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">reshape = <span class="keyword">lambda</span> l,count=<span class="number">3</span>:[flatten(l[count*i : count*(i+<span class="number">1</span>)]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(ceil(<span class="built_in">len</span>(l)/count))]</span><br><span class="line"><span class="comment"># Universal property of Weyl group extension</span></span><br><span class="line">s,n = <span class="string">&quot;A&quot;</span>,<span class="number">3</span></span><br><span class="line">G = MatrixGroup(Thetas(s,n))</span><br><span class="line">relations = UniversalPropertyOfGroup(G,s=<span class="string">&quot;&quot;</span>)</span><br><span class="line">relations_2 = [rel <span class="keyword">for</span> rel <span class="keyword">in</span> relations <span class="keyword">if</span> <span class="built_in">len</span>(rel[<span class="number">0</span>])&lt;<span class="number">2</span>*<span class="number">4</span>]</span><br><span class="line">relations_3 = [rel <span class="keyword">for</span> rel <span class="keyword">in</span> relations_2 <span class="keyword">if</span> <span class="built_in">len</span>(<span class="built_in">set</span>(rel[<span class="number">0</span>]+rel[<span class="number">1</span>]))&lt;<span class="number">3</span>]</span><br><span class="line">relations_print = relations2element(relations_3,FreeGroup(n,<span class="string">&quot;x&quot;</span>).gens())</span><br><span class="line">table(reshape(relations_print))</span><br></pre></td></tr></table></figure>
+<p>每行显示三个等式，比如划线处代表 $x_1x_0^2x_1=x_0^2$<br><img src="https://cdn.jsdelivr.net/gh/zhihongecnu/PicBed/picgo/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20220102115606.png" alt="深度截图_选择区域_20220102115606"></p>
+</li>
+<li><p>结合推导和实验，得出这几条性质：<br>$$<br>\begin{align*}</p>
+<pre><code>  (\theta_i\theta_j)^&#123;o(s_is_j)&#125;&amp;=
+  \begin&#123;cases&#125;
+  \theta_i^2,&amp; i=j\\
+  \theta_i^2\theta_j^2,&amp; i\neq j,o(s_is_j)=2\\
+  \theta_i^2,&amp; i\neq j,o(s_is_j)\neq 2,\vert\alpha_i\vert=\sqrt 2\vert\alpha_j\vert\\
+  1,&amp; otherwise
+  \end&#123;cases&#125;&amp;(1)\\
+  \theta_j\theta_i^2\theta_j^&#123;-1&#125;&amp;=\begin&#123;cases&#125;
+     \theta_i^2\theta_j^2&amp; A_&#123;ij&#125;\ is\ odd\\
+     \theta_i^2&amp; A_&#123;ij&#125;\ is\ even
+  \end&#123;cases&#125;&amp;(2)\\
+  \theta_i^2\theta_j^2&amp;=\theta_j^2\theta_i^2,\ \forall\ i,j&amp;(3)\\
+  \theta_1^&#123;2\epsilon_1&#125;\theta_2^&#123;2\epsilon_2&#125;\cdots\theta_n^&#123;2\epsilon_n&#125;&amp;=1,\ (\epsilon_1,\epsilon_2,\cdots,\epsilon_n)A=0&amp;(4)
+</code></pre>
+<p>\end{align*}<br>$$</p>
+</li>
+</ol>
+<p>注记，性质 (1)-(4) 的证明：</p>
+<ul>
+<li>性质 (3)-(4) 上一小节已证</li>
+<li>性质 (2) 借助 $\theta_ie_j$ 公式或 $\tau\theta_i\tau=\theta$ 证明</li>
+<li>对有限族 EFG 族，性质 (1) 直接检验；对无限族 A-D 族，利用 $\widetilde{W}$ 的“局部性”化归为 $A_l(l\leq 4),B_l(2\leq l\leq 4),C_l(2\leq l\leq 4),D_l(4\leq l\leq 5)$ 再计算验证</li>
+<li>实际上，(1)-(3) 以及前一节推导的公式，都可以利用局部性转化为有限情形的验证</li>
+</ul>
+<h2 id="理论推导-1"><a href="#理论推导-1" class="headerlink" title="理论推导"></a>理论推导</h2><ol>
+<li><p>先证明 $\widetilde{K}\subseteq K$，即证：<br>$$<br>\begin{align*}<br>\left.\theta_{i_1}\cdots\theta_{i_k}\right|<em>H=\left.id\right|<em>H&amp;\Rightarrow\theta</em>{i_1}\cdots\theta</em>{i_k}\in K\<br>i.e.\quad s_{i_1}\cdots s_{i_k}=1&amp;\Rightarrow\theta_{i_1}\cdots\theta_{i_k}\in K<br>\end{align*}<br>$$<br>定义自由群 $F(S)$ 和 $F(\widetilde{S})$ 的子集如下：<br>$$<br>X = {(s_is_j)^{o(s_is_j)}|\ \forall\ i,j}\subseteq F(S)\<br>\widetilde{X} = {(\theta_i\theta_j)^{o(s_is_j)}|\ \forall\ i,j}\subseteq F(\widetilde{S})<br>$$<br>由 Coxeter 群泛性质，左侧表达式写为<br>$$<br>s_{i_1}\cdots s_{i_k}=x_1^{y_1}\cdots x_r^{y_r},\ where\ x_i\in X,y_i\in W<br>$$<br>相应地，右侧式子化为<br>$$<br>\theta_{i_1}\cdots \theta_{i_k}=\tilde x_1^{\tilde y_1}\cdots \tilde{x}_r^{\tilde{y}_r},\ where\ \tilde x_i\in \widetilde X,\tilde y_i\in \widetilde W<br>$$<br>进而：<br>$$<br>\begin{aligned}<br>   equality\ (1)&amp;\Rightarrow \tilde x_i\in K\<br>   equality\ (2)&amp;\Rightarrow \tilde x_i^{\tilde y_i}\in K\</p>
+<pre><code>            &amp;\Rightarrow\tilde x_1^&#123;\tilde y_1&#125;\cdots \tilde&#123;x&#125;_r^&#123;\tilde&#123;y&#125;_r&#125;\in K
+</code></pre>
+<p>\end{aligned}<br>$$</p>
+</li>
+<li><p>下证性质 (1)-(4) 构成 $\widetilde{W}$ 的泛性质：<br>设 $\theta_{i_1}\cdots \theta_{i_k}=1$，则<br>$$<br>\begin{aligned}<br>   As\ stated\ &amp;before\</p>
+<pre><code>          &amp;\theta_&#123;i_1&#125;\cdots \theta_&#123;i_k&#125;=\tilde x_1^&#123;\tilde y_1&#125;\cdots \tilde&#123;x&#125;_r^&#123;\tilde&#123;y&#125;_r&#125;,\ where\ \tilde x_i\in \widetilde X,\tilde y_i\in \widetilde W\\
+</code></pre>
+<p>   \theta_{i_1}\cdots\theta_{i_k} &amp;\underset{reduces\ to}{\overset{(1)}{\Longrightarrow}}(\theta_{i_1,1}^2\cdots\theta_{i_1,i_{t_1}}^2)^{\tilde{y}<em>1}\cdots(\theta</em>{i_r,1}^2\cdots\theta_{i_r,i_{t_r}}^2)^{\tilde{y}_r}\<br>   &amp;\underset{reduces\ to}{\overset{(2)}{\Longrightarrow}}</p>
+<pre><code>\theta_&#123;j_1&#125;^2\cdots\theta_&#123;j_t&#125;^2\ 
+\underset&#123;reduces\ to&#125;&#123;\overset&#123;(3)&#125;&#123;\Longrightarrow&#125;&#125; \theta_1^&#123;2\epsilon_1&#125;\cdots\theta_n^&#123;2\epsilon_n&#125;\ 
+</code></pre>
+<p>   \underset{reduces\ to}{\overset{(4)}{\Longrightarrow}} 1<br>\end{aligned}<br>$$</p>
+</li>
+<li><p>最后，借助泛性质给出 $\widetilde{W}=K\rtimes_\sigma W$ 中的 2-cocycle $\sigma$:</p>
+<ul>
+<li>定义陪集映射 $\gamma$<br> $$<br> \begin{aligned}<pre><code>\gamma :W&amp;\rightarrow \widetilde&#123;W&#125;\\
+w=s_&#123;i_1&#125;s_&#123;i_2&#125;\cdots s_&#123;i_k&#125;&amp;\mapsto \theta_&#123;i_1&#125;\theta_&#123;i_2&#125;\cdots \theta_&#123;i_k&#125;
+</code></pre>
+ \end{aligned}<br> $$<br> 其中 $s_{i_1}s_{i_2}\cdots s_{i_k}$ 为 $w$ 的简约表达，且按字典序取到极小。</li>
+<li>定义 $W$ 在 $K$ 上的作用：<br> $$<br> \begin{aligned}<pre><code>W&amp;\rightarrow Aut(K)\\
+w&amp;\mapsto w:K\rightarrow K\\
+&amp;\qquad\quad\ \ x\mapsto \gamma(w)x\gamma(w)^&#123;-1&#125;
+</code></pre>
+ \end{aligned}<br> $$</li>
+<li>定义二上圈 $\sigma$<br> $$<br> \begin{aligned}<pre><code>\sigma :W\times W&amp;\rightarrow K\\
+(w_1,w_2)&amp;\mapsto \gamma(w_1)\gamma(w_2)\gamma(w_1w_2)^&#123;-1&#125;
+</code></pre>
+ \end{aligned}<br> $$<br>由泛性质知 $\sigma$ 右侧取值在 $K$ 上，且式子可借助 (1)-(4) 化简。</li>
+</ul>
+</li>
+</ol>
+<h1 id="总结延伸"><a href="#总结延伸" class="headerlink" title="总结延伸"></a><span id="summarize">总结延伸</span></h1><h2 id="关于编程"><a href="#关于编程" class="headerlink" title="关于编程"></a>关于编程</h2><p>编程起到的作用为：</p>
+<ul>
+<li>计算数据，放大规律</li>
+<li>提前思路，确认可行性，引导证明，避免思路跑偏</li>
+<li>处理机械性的验证</li>
+</ul>
+<!-- 注：由于 $\widetilde{W}$ 的局部性，许多命题可直接编程检验而不必推导，但这种研究倾向是有害的。编程只是作为能力的延伸，在问题研究中，理论推导才是最重要的部分，不能忘本。另一方面，编程在表现数据方面占优，能够强化这方面的直觉；但目前而言，在很多方面编程还不能代替传统的推导。
+有时候，如果暴力计算，导出规律；问题虽然解决了，但对问题的认识只留在浅浅的表面。从理解理论这个角度，更加说明推导应作为主导，编程只是作为辅助，延伸，提供问题更多的认识。
+总之，编程+数学，尽量避开“都交给计算机去证吧”，能省则省的想法。而是各有侧重，将编程作为一种推导能力的额外提升。
+关于自动证明，我认为这也仍离不开人的参与；机器证明和人工推理不是而独立发展的两部分，未来发展或许是机器证明溶于理论推导中，作为一种新的证明模式。即：编程在最大程度上，化简我们对问题的推理，但整个问题的研究中，人始终站在主导方面。否则，过分依赖编程的推导，会让推理的人丢失对问题的认识，使得研究只有空洞的外壳，而失去对问题的理解体会。 -->
+
+<h2 id="延伸思考"><a href="#延伸思考" class="headerlink" title="延伸思考"></a>延伸思考</h2><ol>
+<li><p>$\widetilde{W}$ 的几何性质：</p>
+<ul>
+<li>Weyl 群 $W$ 作用在 Cartan 子代数 $H$ 上，导出很多丰富的组合性质;类似地，$\widetilde{W}$ 在 $L$ 上的作用是否也有很好的性质。</li>
+<li>$W\hookrightarrow Aut(\Phi)$ 作成正根系的置换；$\widetilde{W}\hookrightarrow (C_2)^n\rtimes_\sigma Aut(\Phi)$ 作成根系置换及符号变换，是否也有好的组合性质，比如定义 $s_{\pm\alpha_i}:=\theta_i^{\pm 1}$。</li>
+</ul>
+</li>
+<li><p>观察发现，对于 ADE 族，$\widetilde{W}$ 作用在 $e_1$ 上，生成 Chevalley 基；对 BCFG 族，$\widetilde{W}$ 作用在 $e_1,e_n$ 上，生成 Chevalley 基。也即，给出 3-n 生成元后，借助 $\widetilde{W}$ 可生成一组 Chevalley 基。相关证明，及进一步的思考发散？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检验 Chevalley 基性质</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">s,n</span>):</span></span><br><span class="line">    L = LieAlgebra(ZZ,cartan_type=[s,n])</span><br><span class="line">    pos_num = (<span class="built_in">len</span>(L.basis())-n)/<span class="number">2</span></span><br><span class="line">    thetas = Thetas(s,n,reduced=<span class="literal">True</span>)</span><br><span class="line">    <span class="keyword">for</span> mat <span class="keyword">in</span> MatrixGroup(thetas):</span><br><span class="line">    mat = matrix(mat)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">max</span>(<span class="built_in">max</span>(mat)) &gt; <span class="number">1</span> <span class="keyword">or</span> <span class="built_in">min</span>(<span class="built_in">min</span>(mat)) &lt; -<span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">test_data = [[<span class="string">&quot;G&quot;</span>,[<span class="number">2</span>]],[<span class="string">&quot;A&quot;</span>,<span class="built_in">range</span>(<span class="number">1</span>,<span class="number">6</span>)],[<span class="string">&quot;F&quot;</span>,[<span class="number">4</span>]],[<span class="string">&quot;B&quot;</span>,<span class="built_in">range</span>(<span class="number">2</span>,<span class="number">6</span>)],[<span class="string">&quot;C&quot;</span>,<span class="built_in">range</span>(<span class="number">2</span>,<span class="number">6</span>)],[<span class="string">&quot;D&quot;</span>,<span class="built_in">range</span>(<span class="number">4</span>,<span class="number">6</span>)]]</span><br><span class="line"><span class="keyword">for</span> s,l <span class="keyword">in</span> test_data:</span><br><span class="line">    <span class="built_in">print</span>(s)</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> l:</span><br><span class="line">        <span class="built_in">print</span>(check(s,n),end=<span class="string">&quot;\t&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>()</span><br></pre></td></tr></table></figure>
+<p>注：取不同 3-n 生成元，得到的 $\widetilde{W}$ 作为 $Inn(L)$ 子群未必相同。</p>
+</li>
+<li><p>推导过程对于 Kac-Moody 代数也成立，相关的推广结论。</p>
+</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2023/05/04/public-key-system/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">非对称加密系统 | 量子系列</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/12/linear-algebra/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">线性代数</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">致宏</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%94%A0%E5%94%A0%E9%97%B2%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">唠唠闲话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%8F%B7%EF%BC%8C%E9%97%AE%E9%A2%98%E5%8F%8A%E7%BB%93%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">记号，问题及结论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%8F%B7%E5%92%8C%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">记号和问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="nav-number">2.2.</span> <span class="nav-text">主要结论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#widetilde-W-%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">$\widetilde{W}的结构$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.1.</span> <span class="nav-text">编程实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.2.</span> <span class="nav-text">理论推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#widetilde-W-%E7%9A%84%E6%B3%9B%E6%80%A7%E8%B4%A8"><span class="nav-number">4.</span> <span class="nav-text">$\widetilde{W}$ 的泛性质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%AE%9E%E9%AA%8C-1"><span class="nav-number">4.1.</span> <span class="nav-text">编程实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC-1"><span class="nav-number">4.2.</span> <span class="nav-text">理论推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E5%BB%B6%E4%BC%B8"><span class="nav-number">5.</span> <span class="nav-text">总结延伸</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BC%96%E7%A8%8B"><span class="nav-number">5.1.</span> <span class="nav-text">关于编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E4%BC%B8%E6%80%9D%E8%80%83"><span class="nav-number">5.2.</span> <span class="nav-text">延伸思考</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+    
+<script src="/js/code-copy.js"></script>
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
+    
+</div>
+
+
+
+</body>
+</html>
